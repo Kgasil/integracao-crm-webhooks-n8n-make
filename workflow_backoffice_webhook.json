@@ -1,0 +1,41 @@
+{
+  "nome_fluxo": "Captura e Roteamento Operacional de Backoffice via Webhook",
+  "autor": "Kaio Gabriel da Silva",
+  "objetivo": "Receber eventos de formulários/sistemas externos, validar campos obrigatórios, padronizar dados e registrar para triagem operacional.",
+  "etapas": [
+    {
+      "ordem": 1,
+      "tipo": "Webhook Trigger (POST)",
+      "descricao": "Recebe requisição JSON com dados do registro (ex.: identificação, origem, prioridade e descrição da demanda)."
+    },
+    {
+      "ordem": 2,
+      "tipo": "Validação e Higienização",
+      "descricao": "Remove espaços extras, padroniza caixa de texto e verifica se campos críticos (identificador e tipo de solicitação) estão preenchidos."
+    },
+    {
+      "ordem": 3,
+      "tipo": "Roteamento Condicional (IF / Switch)",
+      "regras": [
+        {
+          "condicao": "prioridade == 'Alta'",
+          "acao": "Envia alerta imediato para o canal da equipe responsável e marca como 'Prioritário'."
+        },
+        {
+          "condicao": "prioridade != 'Alta'",
+          "acao": "Encaminha para fila padrão de triagem e processamento em lote."
+        }
+      ]
+    },
+    {
+      "ordem": 4,
+      "tipo": "Persistência e Auditoria",
+      "descricao": "Registra o evento normalizado em planilha/base de controle com status inicial 'Pendente' e data/hora de recebimento."
+    },
+    {
+      "ordem": 5,
+      "tipo": "Tratamento de Erro (Error Handler)",
+      "descricao": "Em caso de payload malformado ou falha de destino, registra log de erro para reprocessamento sem perda de dados."
+    }
+  ]
+}
