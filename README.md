@@ -1,5 +1,10 @@
 # Automação de Fluxos de Backoffice e Webhooks (n8n / Make)
 
+<!-- kg-personal-portfolio-v1 -->
+
+[KG Professional Portfolio 1.0 — Portfólio pessoal / Personal portfolio](https://kgasil.github.io/portfolio/) · [Estudo de caso / Case study](https://kgasil.github.io/portfolio/cases.html#webhooks) · [Demonstração ilustrativa / Illustrative demo](https://kgasil.github.io/portfolio/lab.html#workflow)
+
+
 Projeto demonstrativo voltado à **automação de processos operacionais, integração via webhooks e governança de dados de backoffice**, estruturando o fluxo lógico entre captura de eventos, validação e registro de demandas.
 > 🌐 *English version available below:* [Jump to English Version](#english-version)
 ---
